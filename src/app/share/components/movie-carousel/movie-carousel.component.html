@@ -4,7 +4,7 @@
       <div class="swiper-wrapper">
         <ng-container *ngFor="let movie of videoContents">
           <div class="swiper-slide relative">
-            <img [src]="'https://image.tmdb.org/t/p/w500/'+movie.poster_path" alt="Some_Image" />
+            <img [src]="movie.poster_path |Image" alt="Some_Image" />
             <div class="desc p-2">
               <span class="text-base flex flex-wrap font-bold">{{movie.title}}</span>
               <p class="text-xs my-3">{{movie.overview | description}}</p>

@@ -4,11 +4,12 @@ import Swiper from 'swiper';
 import 'swiper/css';
 import { IVideoContent } from '../../models/video-content.interface';
 import { DescriptionPipe } from '../../pipes/description.pipe';
+import { ImagePipe } from '../../pipes/image.pipe';
 
 @Component({
   selector: 'app-movie-carousel',
   standalone: true,
-  imports: [CommonModule,DescriptionPipe],
+  imports: [CommonModule,DescriptionPipe,ImagePipe],
   templateUrl: './movie-carousel.component.html',
   styleUrl: './movie-carousel.component.css'
 })
