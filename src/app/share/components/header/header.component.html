@@ -3,8 +3,8 @@
         <img width="110" src="../../../../assets/notnetflixlogo.png" alt="notnetflixclone">
         <ul class="flex items-center gap-5">
             @for(nav of navList; track nav) {
-                <li class="text-white cursor-pointer text-sm font-extralight hover:text-gray-400 transition[1s] gap-5">
-                    {{nav}}
+                <li (click)="navgateTo(nav.sectionId)" class="text-white cursor-pointer text-sm font-extralight hover:text-gray-400 transition[1s] gap-5">
+                    {{nav.displayName}}
                 </li>
             }
         </ul>

@@ -6,7 +6,7 @@ import { BannerComponent } from '../share/components/banner/banner.component';
 import { MovieService } from '../services/movie.service';
 import { MovieCarouselComponent } from '../share/components/movie-carousel/movie-carousel.component';
 import { IVideoContent } from '../share/models/video-content.interface';
-import { forkJoin, map } from 'rxjs';
+import { Observable, forkJoin, map } from 'rxjs';
 
 
 @Component({
@@ -22,6 +22,8 @@ export class BrowseComponent implements OnInit {
   name = JSON.parse(sessionStorage.getItem("loggedInUser")!).name
   userProfileImg = JSON.parse(sessionStorage.getItem("loggedInUser")!).picture
   email = JSON.parse(sessionStorage.getItem("loggedInUser")!).email
+  bannerDetail$ = new Observable<any>();
+  bannerVideos$ = new Observable<any>();
 
   movies: IVideoContent[] = [];
   tvShows: IVideoContent[] = [];
@@ -46,6 +48,8 @@ export class BrowseComponent implements OnInit {
 
   ngOnInit(): void {
     forkJoin(this.sources).pipe(map(([movies,tvShows,ratedMovies,nowPlaying,upcomingMovies,popularMovies,topRated]) => {
+      this.bannerDetail$ = this.movieService.getBannerDetail(movies.results[0].id)
+      this.bannerVideos$ = this.movieService.getBannerVideo(movies.results[0].id)
       return {movies,tvShows,ratedMovies,nowPlaying,upcomingMovies,popularMovies,topRated}
     })
     ).subscribe((res:any) => {
@@ -63,6 +67,15 @@ export class BrowseComponent implements OnInit {
   signOut() {
     sessionStorage.removeItem("loggedInUser")
     this.auth.signOut();
+  }
+
+  navigateToSection(sectionId: string)
+  {
+    const element = document.getElementById(sectionId);
+    if(element)
+    {
+      element.scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
   }
 
 }
