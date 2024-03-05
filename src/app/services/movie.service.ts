@@ -12,9 +12,9 @@ const options = {
   },
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZjRhNjBhZGE0ZDU0NzgyOGMzYzNkY2U3NDc1YmE1YiIsInN1YiI6IjY1ZDY5MzBmYzVjMWVmMDE3ZDhiMzllYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.t2YE4hbzRcUyzI0pzJkL5io99IgLWczTnNn1av_ebiY'
+    Authorization: 'Bearer toke goes here'
   }
-}
+}//use bearer token in our slack channel I removed it here becuase its public in github just add above in header under Athorization
 
 @Injectable({
   providedIn: 'root'
